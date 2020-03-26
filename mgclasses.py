@@ -2,7 +2,7 @@
 
 import pygame
 from pygame.locals import *
-from constantes import *
+from mgconstantes import *
 
 
 class Niveau:
@@ -70,7 +70,7 @@ class Perso:
 
     def __init__(self, droite, gauche, haut, bas, niveau):
         # Sprites du personnage
-        self.mg = pygame.image.load("images/macgyver.png").convert_alpha()
+        #self.mg = pygame.image.load("images/macgyver.png").convert_alpha()
         #self.droite = pygame.image.load(droite).convert_alpha()
         #self.gauche = pygame.image.load(gauche).convert_alpha()
         #self.haut = pygame.image.load(haut).convert_alpha()

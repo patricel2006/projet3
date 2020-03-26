@@ -64,15 +64,15 @@ while continuer:
     # pour ne pas charger s'il quitte
     if choix != 0:
         # Chargement du fond
-        fond = pygame.image.load(image_fond).convert()
+        fond = pygame.image.load(image_fond).convert
 
-        # Génération du design à partir d'un fichier
-        niveau = Niveau(choix)
+        # Génération du design à partir d'un fichier design
+        niveau = Niveau(choix)  # choix a pris la valeur du fichier 'design' ligne 61
         niveau.generer()
         niveau.afficher(fenetre)
 
-        # Création de Mac Gyver :
-        mg = Perso("images/macgyver.png", niveau)
+        # Création du personnage de Mac Gyver :
+        #mg = Perso("images/macgyver.png", niveau)
 
     # BOUCLE DE JEU
     while continuer_jeu:
@@ -104,11 +104,11 @@ while continuer:
                     mg.deplacer('bas')
 
         # Affichages aux nouvelles positions
-        fenetre.blit(fond, (0, 0))
-        # niveau.afficher(fenetre)
+        #fenetre.blit(fond, (0, 0))
+        #niveau.afficher(fenetre)
         # fenetre.blit(mg.direction, (mg.x, mg.y))  # mg.direction = l'image dans la bonne direction
         pygame.display.flip()
 
         # Victoire -> Retour à l'accueil
-        if niveau.structure[mg.case_y][mg.case_x] == 'a':
-            continuer_jeu = 0
+        #if niveau.structure[mg.case_y][mg.case_x] == 'a':
+            #continuer_jeu = 0
