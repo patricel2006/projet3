@@ -10,7 +10,7 @@ import pygame
 from pygame.locals import *
 
 from mgclasses import *
-from constantes import *
+from mgconstantes import *
 
 pygame.init()
 
