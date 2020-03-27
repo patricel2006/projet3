@@ -1,7 +1,6 @@
 """
 Jeu Mac Gyver Labyrinthe
 Jeu dans lequel Mac Gyver doit récupérer 3 objets nécessaires pour endormir le garde et sortir du labyrinthe.
-
 Script Python
 Fichiers : mglabyrinthe.py, mgclasses.py, mgconstantes.py, design, + images
 """
@@ -64,7 +63,8 @@ while continuer:
     # pour ne pas charger s'il quitte
     if choix != 0:
         # Chargement du fond
-        fond = pygame.image.load(image_fond).convert
+        fond = pygame.image.load(image_fond).convert()
+        fenetre.blit(fond, (0, 0))
 
         # Génération du design à partir d'un fichier design
         niveau = Niveau(choix)  # choix a pris la valeur du fichier 'design' ligne 61
@@ -73,6 +73,8 @@ while continuer:
 
         # Création du personnage de Mac Gyver :
         #mg = Perso("images/macgyver.png", niveau)
+        mg = pygame.image.load(image_icone).convert_alpha()
+        fenetre.blit(mg, (0, 0))
 
     # BOUCLE DE JEU
     while continuer_jeu:
