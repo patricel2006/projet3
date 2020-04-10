@@ -8,35 +8,37 @@ from mgconstantes import *
 class Niveau:
     """Classe permettant de créer un niveau"""
 
+    # méthode qui implémente la capacité de charger un fichier :
     def __init__(self, fichier):
         self.fichier = fichier
         self.structure = 0
 
     def generer(self):
-        """Méthode permettant de générer le niveau en fonction du fichier.
-        On crée une liste générale, contenant une liste par ligne à afficher"""
-        # On ouvre le fichier
+        """Méthode permettant de générer le labyrinthe à partir du fichier contenant son design.
+        La grille est encodée grace à deux boucles for."""
+        # ouverture du fichier contenant le design :
         with open(self.fichier, "r") as fichier:
             # initialisation de ma grille sous forme de liste vide :
             structure_niveau = []
-            # On parcourt les lignes du fichier
+            # parcourt des lignes du fichier :
             for ligne in fichier:
                 ligne_niveau = []
-                # On parcourt les sprites (lettres) contenus dans le fichier
+                # parcourt des sprites (lettres) contenues dans le fichier :
                 for sprite in ligne:
-                    # On ignore les "\n" de fin de ligne
+                    # les "\n" de fin de ligne sont ignorés :
                     if sprite != '\n':
-                        # On ajoute le sprite à la liste de la ligne
+                        # On ajoute une case à la ligne :
                         ligne_niveau.append(sprite)
-                # On ajoute la ligne à la liste du niveau
+                # ajout de la ligne à la liste des lignes
                 structure_niveau.append(ligne_niveau)
-            # On sauvegarde cette structure
+            # sauvegarde de la structure
             self.structure = structure_niveau
 
     def afficher(self, fenetre):
-        """Méthode permettant d'afficher le niveau en fonction
-        de la liste de structure renvoyée par generer()"""
-        # Chargement des images (seule celle d'arrivée contient de la transparence)
+        """Méthode permettant d'afficher le labyrinthe en fonction
+        de la grille renvoyée par generer()"""
+        # Chargement des images :
+        mg = pygame.image.load("image_icone").convert_alpha()
         mur = pygame.image.load(image_mur).convert()
         depart = pygame.image.load(image_depart).convert()
         arrivee = pygame.image.load(image_arrivee).convert_alpha()
@@ -68,27 +70,31 @@ class Niveau:
 class Perso:
     """Classe permettant de créer le personnage de Mac Gyver"""
 
-    def __init__(self, droite, gauche, haut, bas, niveau):
-        # Sprites du personnage
-        #self.mg = pygame.image.load("images/macgyver.png").convert_alpha()
-        #self.droite = pygame.image.load(droite).convert_alpha()
-        #self.gauche = pygame.image.load(gauche).convert_alpha()
-        #self.haut = pygame.image.load(haut).convert_alpha()
-        #self.bas = pygame.image.load(bas).convert_alpha()
-        # Position du personnage en cases et en pixels
+    def __init__(self, niveau, direction):
+
+        # chargement de l'image de MG :
+        self.mg = pygame.image.load("images/macgyver.png").convert_alpha()
+
+        # Position du personnage en cases et en pixels :
         self.case_x = 0
         self.case_y = 0
-        self.x = 0
-        self.y = 0
+        self.x_mg = 0
+        self.y_mg = 0
         # Direction par défaut
         self.direction = self.droite
-        # Niveau dans lequel le personnage se trouve
+        # design du labyrinthe :
         self.niveau = niveau
 
     def deplacer(self, direction):
-        """Methode permettant de déplacer le personnage"""
+        """Methode permettant de déplacer MG"""
 
-        # Déplacement vers la droite
+        # affichage de la direction choisie :
+        print(direction)
+
+        # initialisation des coordonnées de MG :
+        global x_mg
+        global y_mg
+        # Déplacement vers la droite :
         if direction == 'droite':
             # Pour ne pas dépasser l'écran
             if self.case_x < (nombre_sprite_cote - 1):

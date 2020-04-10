@@ -21,6 +21,23 @@ pygame.display.set_icon(icone)
 # Titre
 pygame.display.set_caption(titre_fenetre)
 
+# fonction qui va gérer les déplacements de Mac Gyver :
+
+#def Deplacer_McGyver(direction):
+    #print(direction)
+    #global x_mg
+    #global y_mg
+    #if direction == 'gauche':
+        #x_mg = x_mg - 35
+    #elif direction == 'haut':
+        #y_mg = y_mg - 35
+    #elif direction == 'bas':
+        #y_mg = y_mg + 35
+    #elif direction == 'droite':
+        #x_mg = x_mg + 35
+    #print(str(x_mg))
+    #print(str(y_mg))
+
 # BOUCLE PRINCIPALE
 continuer = 1
 while continuer:
@@ -56,9 +73,11 @@ while continuer:
             elif event.type == KEYDOWN:
                 # Lancement du jeu :
                 if event.key == K_F1:
-                    continuer_accueil = 0  # On quitte l'accueil
-                    choix = 'design'  # On définit l'architecture du jeu dans un fichier
-
+                # continuer_accueil = 0  # On quitte l'accueil
+                # choix = 'design'  # On définit l'architecture du jeu dans un fichier
+                # if event.key == K_ESCAPE:
+                    continuer_accueil = 0
+                    choix = 'design'
     # on vérifie que le joueur a bien fait le choix de commencer à jouer
     # pour ne pas charger s'il quitte
     if choix != 0:
@@ -74,7 +93,7 @@ while continuer:
         # Création du personnage de Mac Gyver :
         #mg = Perso("images/macgyver.png", niveau)
         mg = pygame.image.load(image_icone).convert_alpha()
-        fenetre.blit(mg, (0, 0))
+        fenetre.blit(mg, (x_mg, y_mg))
 
     # BOUCLE DE JEU
     while continuer_jeu:
@@ -95,21 +114,22 @@ while continuer:
                 if event.key == K_ESCAPE:
                     continuer_jeu = 0
 
-                # Touches de déplacement de Donkey Kong
+                # Touches de déplacement de Mac Gyver
                 elif event.key == K_RIGHT:
-                    mg.deplacer('droite')
+                    Deplacer_McGyver('droite')
                 elif event.key == K_LEFT:
-                    mg.deplacer('gauche')
+                    Deplacer_McGyver('gauche')
                 elif event.key == K_UP:
-                    mg.deplacer('haut')
+                    Deplacer_McGyver('haut')
                 elif event.key == K_DOWN:
-                    mg.deplacer('bas')
+                    Deplacer_McGyver('bas')
 
         # Affichages aux nouvelles positions
         #fenetre.blit(fond, (0, 0))
         #niveau.afficher(fenetre)
-        # fenetre.blit(mg.direction, (mg.x, mg.y))  # mg.direction = l'image dans la bonne direction
+        fenetre.blit(mg, (x_mg, y_mg))  # mg.direction = l'image dans la bonne direction
         pygame.display.flip()
+        pygame.display.update()
 
         # Victoire -> Retour à l'accueil
         #if niveau.structure[mg.case_y][mg.case_x] == 'a':
