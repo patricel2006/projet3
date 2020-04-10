@@ -21,6 +21,9 @@ pygame.display.set_icon(icone)
 # Titre
 pygame.display.set_caption(titre_fenetre)
 
+global x_mg
+global y_mg
+
 # fonction qui va gérer les déplacements de Mac Gyver :
 
 #def Deplacer_McGyver(direction):
@@ -116,13 +119,13 @@ while continuer:
 
                 # Touches de déplacement de Mac Gyver
                 elif event.key == K_RIGHT:
-                    Deplacer_McGyver('droite')
+                    Perso.deplacer('droite')
                 elif event.key == K_LEFT:
-                    Deplacer_McGyver('gauche')
+                    Perso.deplacer('gauche')
                 elif event.key == K_UP:
-                    Deplacer_McGyver('haut')
+                    Perso.deplacer('haut')
                 elif event.key == K_DOWN:
-                    Deplacer_McGyver('bas')
+                    Perso.deplacer('bas')
 
         # Affichages aux nouvelles positions
         #fenetre.blit(fond, (0, 0))
