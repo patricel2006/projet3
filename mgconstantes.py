@@ -15,3 +15,7 @@ image_fond = "images/fond.jpg"
 image_mur = "images/mur.png"
 image_depart = "images/depart.png"
 image_arrivee = "images/gardien.png"
+
+# coordonnées de MG :
+x_mg = 0
+y_mg = 0
