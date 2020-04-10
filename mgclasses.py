@@ -38,7 +38,7 @@ class Niveau:
         """Méthode permettant d'afficher le labyrinthe en fonction
         de la grille renvoyée par generer()"""
         # Chargement des images :
-        mg = pygame.image.load("image_icone").convert_alpha()
+        mg = pygame.image.load("images/macgyver.png").convert_alpha()
         mur = pygame.image.load(image_mur).convert()
         depart = pygame.image.load(image_depart).convert()
         arrivee = pygame.image.load(image_arrivee).convert_alpha()
@@ -76,17 +76,19 @@ class Perso:
         self.mg = pygame.image.load("images/macgyver.png").convert_alpha()
 
         # Position du personnage en cases et en pixels :
-        self.case_x = 0
-        self.case_y = 0
+        #self.case_x = 0
+        #self.case_y = 0
         self.x_mg = 0
         self.y_mg = 0
         # Direction par défaut
-        self.direction = self.droite
+        self.direction = direction
         # design du labyrinthe :
         self.niveau = niveau
 
     def deplacer(self, direction):
         """Methode permettant de déplacer MG"""
+
+        self.direction = direction
 
         # affichage de la direction choisie :
         print(direction)
@@ -94,39 +96,22 @@ class Perso:
         # initialisation des coordonnées de MG :
         global x_mg
         global y_mg
+
         # Déplacement vers la droite :
-        if direction == 'droite':
-            # Pour ne pas dépasser l'écran
-            if self.case_x < (nombre_sprite_cote - 1):
-                # On vérifie que la case de destination n'est pas un mur
-                if self.niveau.structure[self.case_y][self.case_x + 1] != 'm':
-                    # Déplacement d'une case
-                    self.case_x += 1
-                    # Calcul de la position "réelle" en pixel
-                    self.x = self.case_x * taille_sprite
-            # Image dans la bonne direction
-            # self.direction = self.droite
+        if self.direction == 'droite':
+            x_mg = x_mg + 35
 
         # Déplacement vers la gauche
-        if direction == 'gauche':
-            if self.case_x > 0:
-                if self.niveau.structure[self.case_y][self.case_x - 1] != 'm':
-                    self.case_x -= 1
-                    self.x = self.case_x * taille_sprite
-            self.direction = self.gauche
+        if self.direction == 'gauche':
+            x_mg = x_mg - 35
 
         # Déplacement vers le haut
-        if direction == 'haut':
-            if self.case_y > 0:
-                if self.niveau.structure[self.case_y - 1][self.case_x] != 'm':
-                    self.case_y -= 1
-                    self.y = self.case_y * taille_sprite
-            self.direction = self.haut
+        if self.direction == 'haut':
+            y_mg = y_mg - 35
 
         # Déplacement vers le bas
-        if direction == 'bas':
-            if self.case_y < (nombre_sprite_cote - 1):
-                if self.niveau.structure[self.case_y + 1][self.case_x] != 'm':
-                    self.case_y += 1
-                    self.y = self.case_y * taille_sprite
-            self.direction = self.bas
+        if self.direction == 'bas':
+            y_mg = y_mg + 35
+
+        print(str(x_mg))
+        print(str(y_mg))

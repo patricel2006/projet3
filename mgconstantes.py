@@ -15,3 +15,6 @@ image_fond = "images/fond.jpg"
 image_mur = "images/mur.png"
 image_depart = "images/depart.png"
 image_arrivee = "images/gardien.png"
+
+x_mg = 0  # abcisse de MG en pixels
+y_mg = 0  # ordonnée de MG en pixels
