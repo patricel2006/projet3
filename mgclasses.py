@@ -68,13 +68,9 @@ class Niveau:
 class Perso:
     """Classe permettant de créer le personnage de Mac Gyver"""
 
-    def __init__(self, droite, gauche, haut, bas, niveau):
+    def __init__(self, niveau):
         # Sprites du personnage
         #self.mg = pygame.image.load("images/macgyver.png").convert_alpha()
-        #self.droite = pygame.image.load(droite).convert_alpha()
-        #self.gauche = pygame.image.load(gauche).convert_alpha()
-        #self.haut = pygame.image.load(haut).convert_alpha()
-        #self.bas = pygame.image.load(bas).convert_alpha()
         # Position du personnage en cases et en pixels
         self.case_x = 0
         self.case_y = 0
