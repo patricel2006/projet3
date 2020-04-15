@@ -120,3 +120,4 @@ class Perso:
                     self.case_y += 1
                     self.y = self.case_y * taille_sprite
             self.direction = self.bas
+

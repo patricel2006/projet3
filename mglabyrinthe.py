@@ -31,6 +31,14 @@ def Deplacer_McGyver(direction):
         x_mg = x_mg - 35
     elif direction == 'haut':
         y_mg = y_mg - 35
+def Deplacer_McGyver(direction):
+    print(direction)
+    global x_mg
+    global y_mg
+    if direction == 'gauche':
+        x_mg = x_mg - 35
+    elif direction == 'haut':
+        y_mg = y_mg - 35
     elif direction == 'bas':
         y_mg = y_mg + 35
     elif direction == 'droite':
